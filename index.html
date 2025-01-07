@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media Performance Analysis - Vetra</title>
+    <link rel="shortcut icon" href="https://cdn.cosmos.so/597fcf16-bfa9-4b76-bad3-8a0726e4abd5?format=jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500&f[]=zodiak@800&f[]=gambarino@400&f[]=sentient@400&f[]=melodrama@400&f[]=dancing-script@700&f[]=satoshi@300,400&f[]=general-sans@400&f[]=switzer@300&f[]=pencerio@50&f[]=bonny@400&f[]=aktura@400&f[]=britney@400&f[]=rowan@400&f[]=bespoke-serif@400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/4b1022cf8e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div id="nav-container">
+      <div id="navbar">
+        <ul id="insights">
+          <li>Chat with Vetra</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="body-container">
+      <div class="box-container">
+        <div class="box">
+          <h4>Posts</h4>
+          <div class="box-bottom">
+            <div class="left">
+              <p class="box-value">7000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="box" id="followers">
+          <h4>Impressions</h4>
+          <div class="box-bottom">
+            <div class="left">
+              <p class="box-value">7000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <h4>Likes</h4>
+          <div class="box-bottom">
+            <div class="left">
+              <p class="box-value">7000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <h4>Comments</h4>
+          <div class="box-bottom">
+            <div class="left">
+              <p class="box-value">7000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="box" id="graph">
+          <div id="top">
+            <h4></h4>
+          </div>
+          <canvas id="engagementChart"></canvas>
+        </div>   
+        
+        <div class="box" id="github">
+          <h4></h4>
+          <div class="box-bottom">
+            <div class="left">
+              <p id="repo-name"><i class="fa-brands fa-github"></i></p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

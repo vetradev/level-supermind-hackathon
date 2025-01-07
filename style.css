@@ -1,0 +1,342 @@
+/* General Reset for Margins, Padding, and Background */
+* {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'General Sans', sans-serif;
+    background: radial-gradient(circle farthest-side, rgba(3, 3, 249, 0.1), rgba(255, 255, 255, 0));
+    overflow-x: hidden;
+}
+
+i {
+    width: 100%;
+    height: 100%;
+    background: none;
+    color: black;
+    font-size: 80px;
+    transition: transform 0.5s ease;
+    scrollbar-width: none;
+}
+
+i:hover {
+    transform: scale(1.03);
+}
+
+canvas {
+    background: none;
+}
+
+/* Main body setup with a gradient background */
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle farthest-side, rgba(3, 3, 249, 0.15), rgba(255, 255, 255, 0));
+}  
+
+/* Navigation container setup */
+body > #nav-container {
+    background: transparent;
+    width: 100%;
+    height: 14vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navbar and its styling */
+body > #nav-container > #navbar {
+    background: transparent;
+    width: 20%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+}
+
+/* Navbar links (UL) setup with background and spacing */
+body > #nav-container > #navbar > ul {
+    cursor: pointer;
+    background: transparent;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 
+        0 2px 5px rgba(0, 0, 0, 0.15),
+        0 4px 10px rgba(0, 0, 0, 0.1),
+        0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Individual list items (Navbar links) */
+body > #nav-container > #navbar > ul > li {
+    background: none;
+    cursor: pointer;
+    list-style: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 20px;
+}
+
+/* Styling for the selected navigation link */
+body > #nav-container > #navbar > ul > #aryan {
+    opacity: 1;
+}
+
+/* Body container to hold content */
+body > #body-container {
+    background: transparent;
+    width: 100vw;
+    height: 86vh; /* Adjusted to account for nav height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+/* Updated box container for bento grid layout */
+.box-container {
+    background: none;
+    width: 90%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Individual box styling */
+.box-container > .box {
+    cursor: pointer;
+    background: none;
+    width: 90%;
+    height: 86%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.382);
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.317);
+    border-radius: 10px;
+    transition: transform 0.3s ease, border-radius 0.3s ease;
+}
+
+/* Hover effect for boxes */
+.box-container >.box:hover {
+    transform: scale(1.01);
+    border-radius: 20px;
+}
+
+/* Specific grid positions for each box */
+.box:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.box:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.box:nth-child(3) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.box:nth-child(4) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.box:nth-child(5) {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.box:nth-child(6) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 2;
+}
+
+.box:nth-child(5):hover {
+    transform: none;
+}
+
+.box:nth-child(5) > #top {
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box:nth-child(5) > #top > h4 {
+    background: none;
+    color: black;
+    font-size: 22px;
+    font-family: 'General Sans', sans-serif;
+    font-weight: 600;
+}
+
+.box:nth-child(5) > #top > p > i {
+    background: none;
+    color: black;
+}
+
+.box:nth-child(5) > #top > p {
+    width: 15%;
+    background: none;
+    color: black;
+    font-size: 13px;
+    font-family: 'General Sans', sans-serif;
+    font-weight: bold;
+    padding: 8px 17px;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Header within each box */
+.box > h4 {
+    overflow: hidden;
+    background: none;
+    color: black;
+    font-size: 22px;
+    font-family: 'General Sans', sans-serif;
+    font-weight: 600;
+}
+
+/* Box bottom section (holds values) */
+.box-bottom {
+    background: none;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+}
+
+/* Left side of the box bottom */
+.box-bottom > .left {
+    background: none;
+    color: black;
+}
+
+/* Styling for the box value */
+.box-bottom > .left > .box-value {
+    background: none;
+    color: black;
+    font-size: 30px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+#github {
+    background: none;
+    /* background-color: red; */
+}
+
+#github > .box-bottom {
+    background: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: bisque; */
+}
+
+#github > .box-bottom > .left {
+    background: none;
+}
+
+/* Month label under box value */
+.box-bottom > .left > .month {
+    background: none;
+    color: black;
+    font-size: 15px;
+    opacity: 0.55;
+}
+
+/* Right side of the box bottom (with percentage) */
+.box-bottom > .right {
+    background: none;
+    background-color: #22c55e;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for percentage inside the right box */
+.box-bottom > .right > p {
+    background: none;
+    color: white;
+    font-weight: 500;
+}
+
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    body > #nav-container > #navbar {
+        width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    body > #nav-container > #navbar {
+        width: 80%;
+    }
+
+    .box-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .box-container > .box {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    body > #nav-container > #navbar > ul {
+        padding: 0 20px;
+    }
+
+    body > #nav-container > #navbar > ul > li {
+        font-size: 14px;
+    }
+
+    .box > h4 {
+        font-size: 18px;
+    }
+
+    .box-bottom > .left > .box-value {
+        font-size: 24px;
+    }
+
+    .box-bottom > .left > .month {
+        font-size: 13px;
+    }
+}

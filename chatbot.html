@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vetra Chatbot</title>
+    <link rel="shortcut icon" href="https://cdn.cosmos.so/597fcf16-bfa9-4b76-bad3-8a0726e4abd5?format=jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="chatbot.css" />
+  </head>
+  <body>
+    <h1>Vetra Insights</h1>
+    <div class="chat-container">
+      <div class="chat-messages" id="chatMessages">
+        <!-- Initial Bot message -->
+        <div class="message bot-message">
+          <img src="https://cdn.cosmos.so/597fcf16-bfa9-4b76-bad3-8a0726e4abd5?format=jpeg" alt="" class="profile-image">
+          Hey, you can ask for more insights below.
+        </div>
+      </div>
+      <div class="loading" id="loading" style="display: none;">Vetra is thinking</div>
+
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type your message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script>
+      const chatMessages = document.getElementById("chatMessages");
+      const userInput = document.getElementById("userInput");
+      const loading = document.getElementById("loading");
+
+      userInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+      });
+
+      async function sendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        addMessage(message, "user");  // Add user message without profile image
+        userInput.value = "";
+
+        // Show the loading text
+        loading.style.display = "block";
+
+        try {
+          const response = await fetch("http://localhost:8000", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              input_value: message,
+              input_type: "chat",
+              output_type: "chat",
+              context: {
+                dataset: [
+                  {
+                    post_type: "carousel",
+                    likes: 120,
+                    shares: 30,
+                    comments: 15,
+                    impressions: 1000,
+                    reach: 800,
+                  },
+                  {
+                    post_type: "reel",
+                    likes: 200,
+                    shares: 40,
+                    comments: 25,
+                    impressions: 1500,
+                    reach: 1200,
+                  },
+                ],
+              },
+            }),
+          });
+
+          const data = await response.json();
+          console.log("API Response:", data);
+
+          const botResponse =
+            data.outputs?.[0]?.outputs?.[0]?.artifacts?.message ??
+            "Sorry, I couldn't process that response.";
+          addMessage(botResponse, "bot");  // Add bot message with profile image
+        } catch (error) {
+          console.error("Error:", error);
+          addMessage("Sorry, I encountered an error. Please try again.", "bot");
+        } finally {
+          // Hide the loading text
+          loading.style.display = "none";
+        }
+      }
+
+      function addMessage(text, sender) {
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("message", `${sender}-message`);
+
+        if (sender === "bot") {
+          // Add profile image only for bot messages
+          const profileImg = document.createElement("img");
+          profileImg.src = "https://cdn.cosmos.so/597fcf16-bfa9-4b76-bad3-8a0726e4abd5?format=jpeg";
+          profileImg.alt = "bot profile image";
+          profileImg.classList.add("profile-image");
+
+          const messageText = document.createElement("div");
+          messageText.textContent = text;
+
+          // Append profile image and message text to the message container
+          messageDiv.appendChild(profileImg);
+          messageDiv.appendChild(messageText);
+        } else {
+          // For user messages, no profile image
+          const messageText = document.createElement("div");
+          messageText.textContent = text;
+          messageDiv.appendChild(messageText);
+        }
+
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    </script>
+  </body>
+</html>
