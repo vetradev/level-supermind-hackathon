@@ -37,7 +37,6 @@ function extractNumberFromResponse(response) {
 // Fetch metric from the API
 async function fetchMetric(metricDescription) {
     try {
-        console.log(`Fetching: ${metricDescription}`);
         const requestBody = {
             input_value: metricDescription,
             input_type: "chat",
@@ -86,7 +85,7 @@ function calculateEngagementMetrics({ totalLikes, totalComments, totalImpression
 // Update dashboard and chart
 // Update dashboard and chart
 async function updateDashboard() {
-    console.log('Starting dashboard update...');
+    console.log("Welcome to Team Vetra's Level Supermind Hackathon Submission Project");
     const loadingElement = document.getElementById('loading');
     if (loadingElement) loadingElement.style.display = 'block';
 
