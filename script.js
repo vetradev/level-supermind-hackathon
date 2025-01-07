@@ -1,4 +1,5 @@
 const insights = document.getElementById('insights');
+const github = document.getElementById('github');
 
 // Ensure smooth fade-in on page load (when the page is loaded directly)
 insights.addEventListener('click', () => {
@@ -7,6 +8,15 @@ insights.addEventListener('click', () => {
 
     setTimeout(() => {
         location.href = 'chatbot.html';
+    }, 1000);
+});
+
+github.addEventListener('click', () => {
+    document.body.style.transition = 'opacity 1s ease';
+    document.body.style.opacity = 0;
+
+    setTimeout(() => {
+        location.href = 'https://github.com/vetradev/level-supermind-hackathon';
     }, 1000);
 });
 
